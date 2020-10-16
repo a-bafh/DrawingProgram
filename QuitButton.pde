@@ -6,7 +6,7 @@ color purpleQuitButton = #FFDBFB;
 color yellowQuitButton = #FEFFDB;
 
 void quitButtonRect() {
-  rect(width*18/20, height*0, width*2/20, height*2/20);
+  rect(width*2/20, height*0, width*1/20, height*2/20);
 }
 void quitButtonSetup() {
   quitButtonFont = createFont ("Harrington", 55); //Must also Tools / Create Font / Find Font / Do Not Press "OK"
@@ -15,7 +15,7 @@ void quitButtonSetup() {
 
 void quitButtonDraw() {
   //HoverOver
-  if (mouseX >= width*18/20  && mouseX <= width && mouseY >= height*0 && mouseY <= height*2/20) {
+  if (mouseX >= width*2/20  && mouseX <= width && mouseY >= height*0 && mouseY <= height*2/20) {
     fill(yellowQuitButton);
     quitButtonRect();
   } else {
@@ -28,12 +28,12 @@ void quitButtonDraw() {
   textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
   //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
   textFont(quitButtonFont, 25); //Change the number until it fits, largest font size
-  text(title, width*18/20, height*0, width*2/20, height*2/20);
+  text(title, width*2/20, height*0, width*1/20, height*2/20);
   fill(255); //Reset to white for rest of the program
 }
 
 void quitButtonMouseClicked() {
-  if (mouseX >= width*18/20  && mouseX <= width && mouseY >= height*0 && mouseY <= height*2/20) {
+  if (mouseX >= width*2/20  && mouseX <= width && mouseY >= height*0 && mouseY <= height*2/20) {
     exit();
   }
 }

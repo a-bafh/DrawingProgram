@@ -19,6 +19,9 @@ float lightBlueColourSelectX, lightBlueColourSelectY, lightBlueColourSelectWidth
 float lightGreenColourSelectX, lightGreenColourSelectY, lightGreenColourSelectWidth, lightGreenColourSelectHeight;
 float lightYellowColourSelectX, lightYellowColourSelectY, lightYellowColourSelectWidth, lightYellowColourSelectHeight;
 float lightOrangeColourSelectX, lightOrangeColourSelectY, lightOrangeColourSelectWidth, lightOrangeColourSelectHeight;
+float brushSizeX1, brushSizeY1, brushSizeDiameter1;
+float brushSizeX2, brushSizeY2, brushSizeDiameter2;
+float brushSizeX3, brushSizeY3, brushSizeDiameter3;
 float brushsize;
 Boolean draw=false;
 
@@ -105,7 +108,22 @@ void setup() {
   lightOrangeColourSelectWidth = width*1/50;
   lightOrangeColourSelectHeight = height*1/50;
   //
-  brushsize = width*1/200;
+  brushsize = width*1/100;
+  //
+  brushSizeX1 = width*1/50 ;
+  brushSizeY1 = height*15/50 ;
+  brushSizeDiameter1 = width*5/250 ;
+  brushSizeDiameter1 = height*5/250 ;
+  //
+  brushSizeX2 = width*3/50 ;
+  brushSizeY2  = height*15/50 ;
+  brushSizeDiameter2  = width*10/250 ;
+  brushSizeDiameter2  = height*10/250 ;
+  //
+  brushSizeX3 = width*6/50 ;
+  brushSizeY3 = height*15/50 ;
+  brushSizeDiameter3 = width*15/250 ;
+  brushSizeDiameter3 = height*15/250 ;
   //
   rect(drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight);
   //bellow this is the color buttons
@@ -141,6 +159,11 @@ void setup() {
   rect(lightYellowColourSelectX, lightYellowColourSelectY, lightYellowColourSelectWidth, lightYellowColourSelectHeight);
   fill(Lightorange);
   rect(lightOrangeColourSelectX, lightOrangeColourSelectY, lightOrangeColourSelectWidth, lightOrangeColourSelectHeight);
+  //
+  fill(black);
+  ellipse(brushSizeX1, brushSizeY1, brushSizeDiameter1, brushSizeDiameter1);
+  ellipse(brushSizeX2, brushSizeY2, brushSizeDiameter2, brushSizeDiameter2);
+  ellipse(brushSizeX3, brushSizeY3, brushSizeDiameter3, brushSizeDiameter3);
 
   ink = black; // example to change ink
 }

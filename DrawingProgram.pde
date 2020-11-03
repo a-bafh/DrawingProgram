@@ -19,6 +19,7 @@ float lightBlueColourSelectX, lightBlueColourSelectY, lightBlueColourSelectWidth
 float lightGreenColourSelectX, lightGreenColourSelectY, lightGreenColourSelectWidth, lightGreenColourSelectHeight;
 float lightYellowColourSelectX, lightYellowColourSelectY, lightYellowColourSelectWidth, lightYellowColourSelectHeight;
 float lightOrangeColourSelectX, lightOrangeColourSelectY, lightOrangeColourSelectWidth, lightOrangeColourSelectHeight;
+float brushsize;
 Boolean draw=false;
 
 void setup() {
@@ -104,6 +105,8 @@ void setup() {
   lightOrangeColourSelectWidth = width*1/50;
   lightOrangeColourSelectHeight = height*1/50;
   //
+  brushsize = width*1/200;
+  //
   rect(drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight);
   //bellow this is the color buttons
   fill(red);
@@ -140,7 +143,6 @@ void setup() {
   rect(lightOrangeColourSelectX, lightOrangeColourSelectY, lightOrangeColourSelectWidth, lightOrangeColourSelectHeight);
 
   ink = black; // example to change ink
-  drawingDiameter = width*1/100;
 }
 
 void draw() {
@@ -149,7 +151,9 @@ void draw() {
   if (draw == true &&  mouseX>drawingSurfaceX  && mouseX<drawingSurfaceX+drawingSurfaceWidth  && mouseY>drawingSurfaceY && mouseY<drawingSurfaceY+drawingSurfaceHeight) {
     fill(ink);
     noStroke();
-    ellipse(mouseX, mouseY, drawingDiameter, drawingDiameter);
+    strokeWeight(brushsize);
+    ellipse(mouseX, mouseY, brushsize, brushsize);
+    strokeWeight(1);
     stroke(1);
   }
 }
@@ -169,5 +173,63 @@ void mousePressed() {
   if (mouseX>redColourSelectX  && mouseX<redColourSelectX+redColourSelectWidth  && mouseY>redColourSelectY  && mouseY<redColourSelectY+redColourSelectHeight) {
 
     ink = red;
+  }
+
+  if (mouseX>blueColourSelectX  && mouseX<blueColourSelectX+blueColourSelectWidth  && mouseY>blueColourSelectY  && mouseY<blueColourSelectY+blueColourSelectHeight) {
+    ink = blue;
+  }
+
+  if (mouseX>greenColourSelectX  && mouseX<greenColourSelectX+greenColourSelectWidth  && mouseY>greenColourSelectY  && mouseY<greenColourSelectY+greenColourSelectHeight) {
+    ink = green;
+  }
+
+  if (mouseX>yellowColourSelectX  && mouseX<yellowColourSelectX+blueColourSelectWidth  && mouseY>yellowColourSelectY  && mouseY<yellowColourSelectY+yellowColourSelectHeight) {
+    ink = yellow;
+  }
+
+  if (mouseX>orangeColourSelectX  && mouseX<orangeColourSelectX+orangeColourSelectWidth  && mouseY>orangeColourSelectY  && mouseY<orangeColourSelectY+orangeColourSelectHeight) {
+    ink = orange;
+  }
+
+  if (mouseX>darkRedColourSelectX  && mouseX<darkRedColourSelectX+darkRedColourSelectWidth  && mouseY>darkRedColourSelectY  && mouseY<darkRedColourSelectY+darkRedColourSelectHeight) {
+
+    ink = Darkred;
+  }
+
+  if (mouseX>darkBlueColourSelectX  && mouseX<darkBlueColourSelectX+darkBlueColourSelectWidth  && mouseY>darkBlueColourSelectY  && mouseY<darkBlueColourSelectY+darkBlueColourSelectHeight) {
+    ink = Darkblue;
+  }
+
+  if (mouseX>darkGreenColourSelectX  && mouseX<darkGreenColourSelectX+darkGreenColourSelectWidth  && mouseY>darkGreenColourSelectY  && mouseY<darkGreenColourSelectY+greenColourSelectHeight) {
+    ink = Darkgreen;
+  }
+
+  if (mouseX>darkYellowColourSelectX  && mouseX<darkYellowColourSelectX+darkYellowColourSelectWidth  && mouseY>darkYellowColourSelectY  && mouseY<darkYellowColourSelectY+darkYellowColourSelectHeight) {
+    ink = Darkyellow;
+  }
+
+  if (mouseX>darkOrangeColourSelectX  && mouseX<darkOrangeColourSelectX+darkOrangeColourSelectWidth  && mouseY>darkOrangeColourSelectY  && mouseY<darkOrangeColourSelectY+darkOrangeColourSelectHeight) {
+    ink = Darkorange;
+  }
+
+  if (mouseX>lightRedColourSelectX  && mouseX<lightRedColourSelectX+lightRedColourSelectWidth  && mouseY>lightRedColourSelectY  && mouseY<lightRedColourSelectY+redColourSelectHeight) {
+
+    ink = Lightred;
+  }
+
+  if (mouseX>lightBlueColourSelectX  && mouseX<lightBlueColourSelectX+lightBlueColourSelectWidth  && mouseY>lightBlueColourSelectY  && mouseY<lightBlueColourSelectY+lightBlueColourSelectHeight) {
+    ink = Lightblue;
+  }
+
+  if (mouseX>lightGreenColourSelectX  && mouseX<lightGreenColourSelectX+lightGreenColourSelectWidth  && mouseY>lightGreenColourSelectY  && mouseY<lightGreenColourSelectY+lightGreenColourSelectHeight) {
+    ink = Lightgreen;
+  }
+
+  if (mouseX>lightYellowColourSelectX  && mouseX<lightYellowColourSelectX+lightYellowColourSelectWidth  && mouseY>lightYellowColourSelectY  && mouseY<lightYellowColourSelectY+lightYellowColourSelectHeight) {
+    ink = Lightyellow;
+  }
+
+  if (mouseX>lightOrangeColourSelectX  && mouseX<lightOrangeColourSelectX+lightOrangeColourSelectWidth  && mouseY>lightOrangeColourSelectY  && mouseY<lightOrangeColourSelectY+lightOrangeColourSelectHeight) {
+    ink = Lightorange;
   }
 }

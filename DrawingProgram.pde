@@ -138,14 +138,19 @@ void setup() {
   rect(lightYellowColourSelectX, lightYellowColourSelectY, lightYellowColourSelectWidth, lightYellowColourSelectHeight);
   fill(Lightorange);
   rect(lightOrangeColourSelectX, lightOrangeColourSelectY, lightOrangeColourSelectWidth, lightOrangeColourSelectHeight);
+
+  ink = black; // example to change ink
+  drawingDiameter = width*1/100;
 }
 
 void draw() {
   quitButtonDraw();
 
-  if (draw == true) {
+  if (draw == true &&  mouseX>drawingSurfaceX  && mouseX<drawingSurfaceX+drawingSurfaceWidth  && mouseY>drawingSurfaceY && mouseY<drawingSurfaceY+drawingSurfaceHeight) {
     fill(ink);
+    noStroke();
     ellipse(mouseX, mouseY, drawingDiameter, drawingDiameter);
+    stroke(1);
   }
 }
 
@@ -158,10 +163,11 @@ void mousePressed() {
     } else {
       draw = false;
     }
-    ink = black; // example to change ink
-    drawingDiameter = width*1/100;
   }
+
+
   if (mouseX>redColourSelectX  && mouseX<redColourSelectX+redColourSelectWidth  && mouseY>redColourSelectY  && mouseY<redColourSelectY+redColourSelectHeight) {
-      ink = red;
+
+    ink = red;
   }
 }

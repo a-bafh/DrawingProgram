@@ -4,18 +4,24 @@ PFont quitButtonFont;
 color purple = #2C08FF; //Ink
 color purpleQuitButton = #FFDBFB;
 color yellowQuitButton = #FEFFDB;
+float quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight;
 
 void quitButtonRect() {
-  rect(width*2/20, height*18/20, width*1/20, height*2/20);
+  rect(quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight);
 }
 void quitButtonSetup() {
   quitButtonFont = createFont ("Harrington", 55); //Must also Tools / Create Font / Find Font / Do Not Press "OK"
   quitButtonRect(); //Quit Button
+  //
+  quitButtonX = width*2/20;
+  quitButtonY = height*18/20;
+  quitButtonWidth = width*1/20;
+  quitButtonHeight = height*2/20;
 }
 
 void quitButtonDraw() {
   //HoverOver
-  if (mouseX >= width*2/20  && mouseX <= width && mouseY >= height*18/20 && mouseY <= height*2/20) {
+  if (mouseX > quitButtonX  && mouseX < quitButtonX + quitButtonWidth && mouseY > quitButtonY && mouseY < quitButtonY + quitButtonHeight ) {
     fill(yellowQuitButton);
     quitButtonRect();
   } else {
@@ -33,7 +39,7 @@ void quitButtonDraw() {
 }
 
 void quitButtonMouseClicked() {
-  if (mouseX >= width*1/20  && mouseX <= width*2/20 && mouseY >= height*2/20 && mouseY <= height*18/20) {
- 
+  if (mouseX > quitButtonX  && mouseX < quitButtonX + quitButtonWidth && mouseY > quitButtonY && mouseY < quitButtonY + quitButtonHeight ) {
+    exit();
   }
 }

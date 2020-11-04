@@ -1,5 +1,12 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
 // Global Variables
-color ink, black=#000000, red=#FF0000, blue=#0E02C9, green=#02C903, yellow=#FFFF00, orange=#FFA500;
+color ink, black=#000000, white=#FFFFFF, red=#FF0000, blue=#0E02C9, green=#02C903, yellow=#FFFF00, orange=#FFA500;
 color Darkred=#790604, Darkblue=#00008B, Darkgreen=#228B22, Darkyellow=#E4CD05, Darkorange=#964000;
 color Lightred= #D21404, Lightblue=#ADD8E6, Lightgreen=#39FF14, Lightyellow=#CCFF00, Lightorange=#FDA50F;
 float drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight;
@@ -9,6 +16,8 @@ float blueColourSelectX, blueColourSelectY, blueColourSelectWidth, blueColourSel
 float greenColourSelectX, greenColourSelectY, greenColourSelectWidth, greenColourSelectHeight;
 float yellowColourSelectX, yellowColourSelectY, yellowColourSelectWidth, yellowColourSelectHeight;
 float orangeColourSelectX, orangeColourSelectY, orangeColourSelectWidth, orangeColourSelectHeight;
+float blackColourSelectX, blackColourSelectY, blackColourSelectWidth, blackColourSelectHeight;
+float eraserButtonX, eraserButtonY, eraserButtonWidth, eraserButtonHeight;
 float darkRedColourSelectX, darkRedColourSelectY, darkRedColourSelectWidth, darkRedColourSelectHeight;
 float darkBlueColourSelectX, darkBlueColourSelectY, darkBlueColourSelectWidth, darkBlueColourSelectHeight;
 float darkGreenColourSelectX, darkGreenColourSelectY, darkGreenColourSelectWidth, darkGreenColourSelectHeight;
@@ -23,11 +32,12 @@ float brushSizeX1, brushSizeY1, brushSizeDiameter1;
 float brushSizeX2, brushSizeY2, brushSizeDiameter2;
 float brushSizeX3, brushSizeY3, brushSizeDiameter3;
 float brushsize;
-Boolean draw=false;
+  Boolean draw=false;
 
 void setup() {
   size(800, 600);
   quitButtonSetup();
+  musicButtonSetup();
   drawingSurfaceX = width*3/20;
   drawingSurfaceY = height*0;
   drawingSurfaceWidth = width*1 ; 
@@ -108,6 +118,16 @@ void setup() {
   lightOrangeColourSelectWidth = width*1/50;
   lightOrangeColourSelectHeight = height*1/50;
   //
+  eraserButtonX = width*6/50;
+  eraserButtonY = height*11/50;
+  eraserButtonWidth = width*1/50;
+  eraserButtonHeight = height*1/50;
+  //
+  blackColourSelectX = width*0/50;
+  blackColourSelectY = height*11/50;
+  blackColourSelectWidth = width*1/50;
+  blackColourSelectHeight = height*1/50;
+  //
   brushsize = width*1/100;
   //
   brushSizeX1 = width*1/50 ;
@@ -137,6 +157,10 @@ void setup() {
   rect(yellowColourSelectX, yellowColourSelectY, yellowColourSelectWidth, yellowColourSelectHeight);
   fill(orange);
   rect(orangeColourSelectX, orangeColourSelectY, orangeColourSelectWidth, orangeColourSelectHeight);
+  fill(white);
+  rect(eraserButtonX, eraserButtonY, eraserButtonWidth, eraserButtonHeight);
+  fill(black);
+  rect(blackColourSelectX, blackColourSelectY, blackColourSelectWidth, blackColourSelectHeight);
   //
   fill(Darkred);
   rect (darkRedColourSelectX, darkRedColourSelectY, darkRedColourSelectWidth, darkRedColourSelectHeight);
@@ -164,12 +188,16 @@ void setup() {
   ellipse(brushSizeX1, brushSizeY1, brushSizeDiameter1, brushSizeDiameter1);
   ellipse(brushSizeX2, brushSizeY2, brushSizeDiameter2, brushSizeDiameter2);
   ellipse(brushSizeX3, brushSizeY3, brushSizeDiameter3, brushSizeDiameter3);
+  //
+  fill(white);
+  rect(musicButtonX, musicButtonY, musicButtonWidth, musicButtonHeight);
 
   ink = black; // example to change ink
 }
 
 void draw() {
   quitButtonDraw();
+  musicButtonDraw();
 
   if (draw == true &&  mouseX>drawingSurfaceX  && mouseX<drawingSurfaceX+drawingSurfaceWidth  && mouseY>drawingSurfaceY && mouseY<drawingSurfaceY+drawingSurfaceHeight) {
     fill(ink);
@@ -254,5 +282,25 @@ void mousePressed() {
 
   if (mouseX>lightOrangeColourSelectX  && mouseX<lightOrangeColourSelectX+lightOrangeColourSelectWidth  && mouseY>lightOrangeColourSelectY  && mouseY<lightOrangeColourSelectY+lightOrangeColourSelectHeight) {
     ink = Lightorange;
+  }
+
+  if (mouseX>eraserButtonX && mouseX<eraserButtonX+eraserButtonWidth && mouseY>eraserButtonY && mouseY<eraserButtonY+eraserButtonHeight) {
+    ink = white;
+  }
+
+  if (mouseX>blackColourSelectX && mouseX<blackColourSelectX+blackColourSelectWidth && mouseY>blackColourSelectY && mouseY<blackColourSelectY+blackColourSelectHeight) {
+    ink = black;
+  }
+
+  if (mouseX>brushSizeX1 && mouseX<brushSizeX1+brushSizeDiameter1 && mouseY>brushSizeY1 && mouseY<brushSizeY1+brushSizeDiameter1) {
+    brushsize =  width*1/100;
+  }
+
+  if (mouseX>brushSizeX2 && mouseX<brushSizeX2+brushSizeDiameter2 && mouseY>brushSizeY2 && mouseY<brushSizeY2+brushSizeDiameter2) {
+    brushsize = width*2.5/100;
+  }
+
+  if (mouseX>brushSizeX3 && mouseX<brushSizeX3+brushSizeDiameter3 && mouseY>brushSizeY3 && mouseY<brushSizeY3+brushSizeDiameter3) {
+    brushsize = width*5/100;
   }
 }
